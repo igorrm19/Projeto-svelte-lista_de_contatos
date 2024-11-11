@@ -2,6 +2,7 @@
   import {contador} from "./stores.js"
   import "./app.css"
   import Pesquisar from "./lib/pesquisar.svelte"
+  import TableAdicionar from "./lib/tableAdicionar.svelte";
 </script>
 
 
@@ -15,15 +16,18 @@
   <div id="pesquisa">
     <Pesquisar />
   </div>
+
+  <div id="adicionar">
+   <TableAdicionar />
+  </div>
  
 </main>
 
 
 
-
-
 <style>
-  #cabesalho{
+
+#cabesalho{
     display: flex;
     gap: 2rem;
     justify-content: center;

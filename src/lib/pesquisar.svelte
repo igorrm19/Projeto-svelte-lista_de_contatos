@@ -1,15 +1,12 @@
 
 <script>
- import {contador} from '../stores.js'
+  import {contador} from '../stores.js'
+  import { lista } from "../src.js";
  
-  let lista = [
-    {id: 1, nome: "Igor", email: "igormachado14@gmail", status:  true},
-    {id: 2, nome: "Briza", email: "brizamachado14@gmail", status: false},
-    {id: 3, nome: "Tierre", email: "tierremachado14@gmail", status: true}
-  ];
-
+  
   contador.set(lista.length) 
 </script>
+
 
 
 <div id="container">
@@ -32,7 +29,7 @@
       <h3>Contato {newlista.id},  {newlista.nome},  {newlista.email}</h3>
 
       {#if newlista.status == true}
-        <i style class="fa-solid fa-tree status-ativo"></i>
+        <i class="fa-solid fa-tree status-ativo"></i>
       {/if}
 
        {#if newlista.status === false}
@@ -43,12 +40,20 @@
    {/each}
   </ul>
 
+   
 </div>
 
 <style>
+
+  ul{
+    padding: 2rem;
+    margin-top: 20px;
+  }
+
   li{
     display: flex;
     gap: 2rem;
+    margin-top: 20px;
     text-align: center;
     justify-content: center;
     align-items: center;
