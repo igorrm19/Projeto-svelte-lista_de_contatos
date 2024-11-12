@@ -22,50 +22,8 @@
   </div>
 
 
-  <ul class="items">
-   {#each lista as newlista}
-    <li>
-
-      <h3>Contato {newlista.id},  {newlista.nome},  {newlista.email}</h3>
-
-      {#if newlista.status == true}
-        <i class="fa-solid fa-tree status-ativo"></i>
-      {/if}
-
-       {#if newlista.status === false}
-         <i class="fa-solid fa-tree  status-inativo"></i>
-       {/if}
-
-    </li>
-   {/each}
-  </ul>
-
    
 </div>
 
-<style>
-
-  ul{
-    padding: 2rem;
-    margin-top: 20px;
-  }
-
-  li{
-    display: flex;
-    gap: 2rem;
-    margin-top: 20px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .status-ativo{
-    color: green;
-  }
-
-  .status-inativo{
-    color: red;
-  }
-</style>
 
 

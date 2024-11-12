@@ -4,14 +4,11 @@
 
 :root {
   height: 100%;
-  margin: 20pxx;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.884);
-  background-image: linear-gradient(rgb(124, 212, 109), rgb(21, 138, 148));
+  background-image: linear-gradient(rgb(107, 197, 92), rgb(21, 138, 148));
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
