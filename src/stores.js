@@ -1,3 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const contador = writable(0);
+export const contador = writable(null); //contador começa sem valor
+
+export const cont = writable(0);

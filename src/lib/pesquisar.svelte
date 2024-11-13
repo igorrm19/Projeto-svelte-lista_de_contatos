@@ -1,13 +1,4 @@
 
-<script>
-  import {contador} from '../stores.js'
-  import { lista } from "../src.js";
- 
-  
-  contador.set(lista.length) 
-</script>
-
-
 
 <div id="container">
   <div class="input-group">
@@ -20,10 +11,14 @@
            class="input-field"
            placeholder="pesquisar">
   </div>
-
-
-   
+  
 </div>
 
 
-
+<style>
+  div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+</style>

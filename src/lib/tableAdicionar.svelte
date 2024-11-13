@@ -1,25 +1,35 @@
 
 <script>
-  import {contador} from '../stores.js'
 
-  let usuarios = [] //aaray de objct vazio
+  import {contador} from '../stores.js';
+  import {cont} from '../stores.js'
+
+  let usuarios = []; //aaray de objct vazio
+  let isEditable = true;
 
   function Adicionar() {
-   usuarios = [...usuarios, {id: Date.now() ,nome: '', email: ''}]  //funcao click, ao clicar adiciona um id aleatorio, nome e eail vazio
-   contador.update(() => usuarios.length)
-
-   if(usuarios[0].nome == ''){  //não esta funcionando descobrir motivo
-     contador.update(() => null)
+   usuarios = [...usuarios, {id: Date.now() ,nome: '', email: '', editMode: true} ];  //funcao click, ao clicar adiciona um id aleatorio, nome e eail vazio
+   contador.update(() => usuarios.length); //atualiza o valor do contador reativo a cada novo objct
+ 
    }
-  } 
+
+   function Editar() {
+    isEditable = !isEditable //sempre que clikar no botao vi alterar entre true e false 
+   }
+    
+
+
+  function Excluir(id){
+    usuarios = usuarios.filter((usuario, index) => usuario.id !== id); //eu posso usar o index para excluir tambem index !== index
+    contador.update(() => usuarios.length);
+  }
 
  
   function ExibirConsole() {
-   return usuarios.forEach((usuarios, index) => {
-    console.log(`Ususario ${index + 1}`, usuarios) //funcao click, mostra tudo que ja foi adicionado no objct usuarios
+   return usuarios.forEach((usuario, index) => {
+    console.log(`Ususario ${index + 1} ${usuario.id}`, usuario, usuarios); //funcao click, mostra tudo que ja foi adicionado no objct usuarios
   });
  }
-
 
 </script>
 
@@ -38,7 +48,7 @@
 
     </thead>
 
-    {#each usuarios as usuario, index}
+    {#each usuarios as usuario (usuario.id)}
     <tbody>
 
       <tr>
@@ -47,38 +57,46 @@
         </td>
 
         <td>
-          <input bind:value={usuario.nome} placeholder="Nome..." type="text">
+          <input bind:value={usuario.nome} readonly={isEditable} placeholder="Nome..." type="text">
         </td>
 
         <td>
-          <input bind:value={usuario.email} placeholder="Email..." type="text">
+          <input bind:value={usuario.email}  readonly={!usuario.editMode} placeholder="Email..." type="text">
         </td>
 
         <td>
-          <i class="fa-solid fa-tree status-ativo"></i>
+          <i  class="fa-solid fa-tree status-ativo"></i>
         </td>
 
         <td>
-          <i class="fa-solid fa-trash status-desativado"></i>
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <!-- svelte-ignore a11y_no_static_element_interactions -->
+            <i on:click={() => {Excluir(usuario.id)}}  class="fa-solid fa-trash status-desativado"></i>
         </td>
 
         <td>
-          <i class="fa-solid fa-pen"></i>
+          <!-- svelte-ignore a11y_click_events_have_key_events -->
+          <!-- svelte-ignore a11y_no_static_element_interactions -->
+          <i on:click={Editar} class="fa-solid fa-pen"></i>
         </td>
       </tr>
 
     </tbody>
-    
+   
     {/each}
 </table>
 
-
-<button on:click={Adicionar} on:click={ExibirConsole}>Adicionar</button>
-
-
+<div>
+  <button on:click={Adicionar} on:click={ExibirConsole}>Adicionar</button>
+</div>
 
 
 <style>
+  div{
+    display: flex;
+    padding: 1rem;
+  }
+
   table{
    margin-left: 100px;
   }

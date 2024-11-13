@@ -19,3 +19,6 @@ export let lista = [
    }
 
 
+lista.forEach((lista, index) => {console.log("Exibir", index +1, " ", lista)})
+
+
