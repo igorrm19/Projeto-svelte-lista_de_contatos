@@ -3,12 +3,12 @@
 @import 'tailwindcss/utilities';
 
 :root {
-  height: 100%;
+  
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color-scheme: light dark;
-  color: rgba(0, 0, 0, 0.884);
-  background-image: linear-gradient(rgb(107, 197, 92), rgb(21, 138, 148));
+  color: rgb(0, 0, 0);
+  background-color: rgba(11, 71, 50, 0.928);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

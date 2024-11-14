@@ -36,7 +36,7 @@
   }
 
 #contador{
-  color:green;
+  color:rgb(0, 255, 0);
   text-align: center;
   display: flex;
   justify-content: center;

@@ -2,22 +2,23 @@
 <script>
 
   import {contador} from '../stores.js';
-  import {cont} from '../stores.js'
+
 
   let usuarios = []; //aaray de objct vazio
-  let isEditable = true;
+  let editar = true;
+
+  contador.update(() => usuarios.length); //atualiza n somete quando cliko em um botao mas quando por exemplo salvo algo no codigo
 
   function Adicionar() {
-   usuarios = [...usuarios, {id: Date.now() ,nome: '', email: '', editMode: true} ];  //funcao click, ao clicar adiciona um id aleatorio, nome e eail vazio
+   usuarios = [...usuarios, {id: Date.now() ,nome: '', email: ''} ];  //funcao click, ao clicar adiciona um id aleatorio, nome e eail vazio
    contador.update(() => usuarios.length); //atualiza o valor do contador reativo a cada novo objct
  
    }
 
    function Editar() {
-    isEditable = !isEditable //sempre que clikar no botao vi alterar entre true e false 
-   }
+    editar = !editar  //sempre que clikar no botao vi alterar entre true e false, o realdoly dessativa o input para edicao se seu valor for falso 
+   } //enho que editar item por item e n todos
     
-
 
   function Excluir(id){
     usuarios = usuarios.filter((usuario, index) => usuario.id !== id); //eu posso usar o index para excluir tambem index !== index
@@ -33,11 +34,9 @@
 
 </script>
 
-
-
 <table>
     <thead>
-      <tr>
+      <tr style="background-color:  mediumslateblue">
         <th>ID</th>
         <th>Adicionar nome</th>
         <th>Adicionar email</th>
@@ -51,17 +50,17 @@
     {#each usuarios as usuario (usuario.id)}
     <tbody>
 
-      <tr>
+      <tr style="background-color: limegreen">
         <td>
           <h3>{usuario.id}</h3>
         </td>
-
+      
         <td>
-          <input bind:value={usuario.nome} readonly={isEditable} placeholder="Nome..." type="text">
+          <input bind:value={usuario.nome} readonly={editar} placeholder="Nome..." type="text">
         </td>
 
         <td>
-          <input bind:value={usuario.email}  readonly={!usuario.editMode} placeholder="Email..." type="text">
+          <input bind:value={usuario.email} readonly={editar} placeholder="Email..." type="text">
         </td>
 
         <td>
@@ -87,7 +86,7 @@
 </table>
 
 <div>
-  <button on:click={Adicionar} on:click={ExibirConsole}>Adicionar</button>
+  <button on:click={Adicionar} on:click={ExibirConsole}>Add</button>
 </div>
 
 
@@ -98,10 +97,12 @@
   }
 
   table{
-   margin-left: 100px;
+   margin-left: 30px;
+   margin-top: 30px;
+   border: 1px solid black;
   }
   .status-ativo{
-    color: green;
+    color: rgb(13, 75, 13);
   }
 
   .status-desativado{
@@ -109,22 +110,30 @@
   }
 
   th{
-    padding: 2rem;
+    padding: 4rem;
+    border: 1px solid black;
   }
 
   td{
-    padding: 2rem;
+    padding: 1rem;
+    border: 1px solid black;
+  }
+
+  i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   button{
-    padding: 2rem;
     background-color: rgb(39, 64, 208);
     text-align: center;
-    margin: 3rem;
-    margin-top: -2rem;
-    border: 1px solid black;
-    border-radius: 2rem;
-    color: black;
+    border: 1px solid rgb(169, 163, 163);
+    border-radius: 30%;
+    color: rgb(208, 198, 198);
+    height: 50px;
+    width: 100px;
+    margin-left: 70px;
   }
 
 </style>
