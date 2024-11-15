@@ -36,7 +36,7 @@
 
 <table>
     <thead>
-      <tr style="background-color:  mediumslateblue">
+      <tr id="tr-1" style="background-color:  mediumslateblue">
         <th>ID</th>
         <th>Adicionar nome</th>
         <th>Adicionar email</th>
@@ -50,7 +50,7 @@
     {#each usuarios as usuario (usuario.id)}
     <tbody>
 
-      <tr style="background-color: limegreen">
+      <tr id="tr-2" style="background-color: limegreen">
         <td>
           <h3>{usuario.id}</h3>
         </td>
@@ -101,6 +101,15 @@
    margin-top: 30px;
    border: 1px solid black;
   }
+ 
+  #tr-1{
+    background-image: linear-gradient( mediumslateblue,  rgb(76, 58, 180), rgb(50, 32, 152));
+  }
+
+  #tr-2{
+    background-image: linear-gradient(limegreen, rgb(19, 141, 19), rgb(13, 141, 13));
+  }
+
   .status-ativo{
     color: rgb(13, 75, 13);
   }
