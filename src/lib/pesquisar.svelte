@@ -19,7 +19,7 @@
            class="input-field"
            on:input={atualizarBusaca}
            bind:value={$buscar}
-           placeholder="pesquisar">
+           placeholder="pesquisar por nome...">
   </div>
   
 </div>
