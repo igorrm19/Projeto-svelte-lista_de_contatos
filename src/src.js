@@ -1,3 +1,5 @@
+
+
 export let variaveis = [
     { id: aleatorio(),
        nome: "", 

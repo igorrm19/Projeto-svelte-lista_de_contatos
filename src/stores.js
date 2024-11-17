@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store';
 
-export const contador = writable(null); //contador começa sem valor
+export const contador = writable(0); //contador começa sem valor
 
-export const cont = writable(0);
+export const buscar = writable('');
+
+export let usuarios = writable([]);

@@ -1,4 +1,12 @@
+<script>
+  import {buscar} from '../stores.js';
 
+
+  function atualizarBusaca(event) {
+    return buscar.set(event.target.value)
+   }
+ 
+</script>
 
 <div id="container">
   <div class="input-group">
@@ -9,6 +17,8 @@
     <input id="sereach"
            type="text"
            class="input-field"
+           on:input={atualizarBusaca}
+           bind:value={$buscar}
            placeholder="pesquisar">
   </div>
   

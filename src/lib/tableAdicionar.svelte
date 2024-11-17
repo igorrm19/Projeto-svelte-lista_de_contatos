@@ -1,36 +1,53 @@
 
 <script>
 
-  import {contador} from '../stores.js';
+  import {buscar, contador} from '../stores.js';
+  import {usuarios} from '../stores.js'
 
-
-  let usuarios = []; //aaray de objct vazio
+  
   let editar = true;
+  let filtro = []
 
-  contador.update(() => usuarios.length); //atualiza n somete quando cliko em um botao mas quando por exemplo salvo algo no codigo
+ 
+  contador.update(() => $usuarios.length); //atualiza n somete quando cliko em um botao mas quando por exemplo salvo algo no codigo
+
 
   function Adicionar() {
-   usuarios = [...usuarios, {id: Date.now() ,nome: '', email: ''} ];  //funcao click, ao clicar adiciona um id aleatorio, nome e eail vazio
-   contador.update(() => usuarios.length); //atualiza o valor do contador reativo a cada novo objct
+   // usuarios = [...usuarios, {id: Date.now() ,nome: '', email: '', editar} ];  //funcao click, ao clicar adiciona um id aleatorio, nome e eail vazio
+   // contador.update(() => $usuarios.length); //atualiza o valor do contador reativo a cada novo objct
  
+    const dados = {id: Date.now() ,nome: '', email: '', editar};
+
+    usuarios.update(tableDados => 
+       [...tableDados, dados]
+    )
+
+    contador.update(() => $usuarios.length); //atualiza o valor do contador reativo a cada novo objct
    }
 
-   function Editar() {
-    editar = !editar  //sempre que clikar no botao vi alterar entre true e false, o realdoly dessativa o input para edicao se seu valor for falso 
-   } //enho que editar item por item e n todos
-    
+
+
+   function  Editar() {
+    editar = !editar
+   
+   } 
 
   function Excluir(id){
-    usuarios = usuarios.filter((usuario, index) => usuario.id !== id); //eu posso usar o index para excluir tambem index !== index
-    contador.update(() => usuarios.length);
+   // usuarios = usuarios.filter((usuario, index) => usuario.id !== id); //eu posso usar o index para excluir tambem index !== index
+     usuarios.update((dados) => dados.filter((item, index) => item.id !== id) );
+    
   }
 
  
   function ExibirConsole() {
-   return usuarios.forEach((usuario, index) => {
-    console.log(`Ususario ${index + 1} ${usuario.id}`, usuario, usuarios); //funcao click, mostra tudo que ja foi adicionado no objct usuarios
+   return $usuarios.forEach((usuario, index) => {
+    console.log(`Ususario ${index + 1} ${usuario.id}`, usuario, $usuarios, " Buacar usuario ", $buscar); //funcao click, mostra tudo que ja foi adicionado no objct usuarios
   });
+ 
  }
+ 
+
+//$usuarios as usuario (usuario.id)
 
 </script>
 
@@ -47,7 +64,7 @@
 
     </thead>
 
-    {#each usuarios as usuario (usuario.id)}
+    {#each $usuarios.filter(usuario => usuario.nome.includes($buscar)) as usuario (usuario.id)}
     <tbody>
 
       <tr id="tr-2" style="background-color: limegreen">
