@@ -44,8 +44,20 @@ Particularidade do svelte semelhante a um laço for aplicado dentro da parte de 
 
 Alem de adicionar temos funções simples como editar que ultila o metodo map para localizar um item especico e alterar seu sua variavel ao clickar en editar para que possa prencher os campos de nome e email.
 
+
+
 Temos a função de excluir que usa filter para filtrar todos os items do array com exeção do item especifico que esta o botão excluir escolhido e alem desses temos a função exibir no console que mostra todas as operações realizadas no console do navegador ou do node.
 
+
+```
+
+function ExibirConsole() {
+   return $usuarios.forEach((usuario, index) => {
+    console.log(`Ususario ${index + 1} ${usuario.id}`, usuario, $usuarios, " Buacar usuario ", $buscar); 
+  });
+
+
+```
 
 
 
