@@ -34,5 +34,18 @@
 
 ```
 
+Primeiramente, a função adicionar é ultilizada sempre ao clikar no botão adicionar, ela adiciona um novo objeto dentro de um array vazio em stores.js ao criar um novo objeto a o svelte ultilizando. 
+
+``` 
+ {#each $usuarios.filter(usuario => usuario.nome.includes($buscar)) as usuario (usuario.id)}
+
+```
+Particularidade do svelte semelhante a um laço for aplicado dentro da parte de html. Ele alem de ultilizar filter para filtrar usuarios digitados em busca tambem cria uma nova tabela ao clicar em adicionar.
+
+Alem de adicionar temos funções simples como editar que ultila o metodo map para localizar um item especico e alterar seu sua variavel ao clickar en editar para que possa prencher os campos de nome e email.
+
+Temos a função de excluir que usa filter para filtrar todos os items do array com exeção do item especifico que esta o botão excluir escolhido e alem desses temos a função exibir no console que mostra todas as operações realizadas no console do navegador ou do node.
+
+
 
 
