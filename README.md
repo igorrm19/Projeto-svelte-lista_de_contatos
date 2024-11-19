@@ -21,7 +21,18 @@
 
  essa funcao usa uma variavel reativa importada de store.js local que fica armazenado os stores, essa funcao esta reponsavel por capturar dados de busca e atualizlos constantemente para ser usado em table que esta o coraçao do projeto
 
+# No componente tabela 
+```
 
+    const dados = {id: Date.now() ,nome: '', email: '', editar};
+
+    usuarios.update(tableDados => 
+       [...tableDados, dados]
+    )
+
+    contador.update(() => $usuarios.length);
+
+```
 
 
 
