@@ -14,9 +14,8 @@
  Em pesquisar temos uma função chamada atualizar busca 
  
  ```  function atualizarBusaca(event)
- {  return buscar.set(event.target.value) }  ```
-
-
+ {  return buscar.set(event.target.value) }
+```
 
  essa funcao usa uma variavel reativa importada de store.js local que fica armazenado os stores, essa funcao esta reponsavel por capturar dados de busca e atualizlos constantemente para ser usado em table que esta o coraçao do projeto
 
