@@ -1,8 +1,8 @@
 
 <script>
 
-  import {buscar, contador} from '../stores.js';
-  import {usuarios} from '../stores.js'
+  import {buscar, contador, usuarios} from '../stores.js';
+  //import {usuarios} from '../stores.js'
 
   
   let editar = true;
@@ -26,11 +26,15 @@
    }
 
 
+   function Editar(id) {
+     usuarios.update((dados) =>
+        dados.map((t) =>
+          t.id === id ? { ...t, editar: !t.editar } : t
+      )
+    );
+}
 
-   function  Editar() {
-    editar = !editar
-   
-   } 
+
 
   function Excluir(id){
    // usuarios = usuarios.filter((usuario, index) => usuario.id !== id); //eu posso usar o index para excluir tambem index !== index
@@ -73,11 +77,11 @@
         </td>
       
         <td>
-          <input bind:value={usuario.nome} readonly={editar} placeholder="Nome..." type="text">
+          <input bind:value={usuario.nome} readonly={usuario.editar} placeholder="Nome..." type="text">
         </td>
 
         <td>
-          <input bind:value={usuario.email} readonly={editar} placeholder="Email..." type="text">
+          <input bind:value={usuario.email} readonly={usuario.editar} placeholder="Email..." type="text">
         </td>
 
         <td>
@@ -93,7 +97,7 @@
         <td>
           <!-- svelte-ignore a11y_click_events_have_key_events -->
           <!-- svelte-ignore a11y_no_static_element_interactions -->
-          <i on:click={Editar} class="fa-solid fa-pen"></i>
+          <i on:click={() => Editar(usuario.id)} class="fa-solid fa-pen"></i>
         </td>
       </tr>
 
