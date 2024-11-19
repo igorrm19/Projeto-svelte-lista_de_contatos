@@ -1,4 +1,4 @@
- #Svelte lista 
+ # Svelte lista 
  
  O codigo svelte se trata de uma lista simples de nomes e emails com diversas funcionalidades como pesquisar por nome
  adicionar novo contato a lista, editar e excluir.
